@@ -1,27 +1,40 @@
 {
-  "name": "util-deprecate",
-  "version": "1.0.2",
-  "description": "The Node.js `util.deprecate()` function with browser support",
-  "main": "node.js",
-  "browser": "browser.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "utils-merge",
+  "version": "1.0.1",
+  "description": "merge() utility function",
+  "keywords": [
+    "util"
+  ],
+  "author": {
+    "name": "Jared Hanson",
+    "email": "jaredhanson@gmail.com",
+    "url": "http://www.jaredhanson.net/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/TooTallNate/util-deprecate.git"
+    "url": "git://github.com/jaredhanson/utils-merge.git"
   },
-  "keywords": [
-    "util",
-    "deprecate",
-    "browserify",
-    "browser",
-    "node"
-  ],
-  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TooTallNate/util-deprecate/issues"
+    "url": "http://github.com/jaredhanson/utils-merge/issues"
   },
-  "homepage": "https://github.com/TooTallNate/util-deprecate"
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./index",
+  "dependencies": {},
+  "devDependencies": {
+    "make-node": "0.3.x",
+    "mocha": "1.x.x",
+    "chai": "1.x.x"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
+  }
 }
