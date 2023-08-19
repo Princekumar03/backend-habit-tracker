@@ -1,58 +1,32 @@
-# xdg-basedir [![Build Status](https://travis-ci.org/sindresorhus/xdg-basedir.svg?branch=master)](https://travis-ci.org/sindresorhus/xdg-basedir)
+# widest-line [![Build Status](https://travis-ci.org/sindresorhus/widest-line.svg?branch=master)](https://travis-ci.org/sindresorhus/widest-line)
 
-> Get [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) paths
+> Get the visual width of the widest line in a string - the number of columns required to display it
+
+Some Unicode characters are [fullwidth](https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms) and use double the normal width. [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code) are stripped and doesn't affect the width.
+
+Useful to be able to know the maximum width a string will take up in the terminal.
 
 
 ## Install
 
 ```
-$ npm install --save xdg-basedir
+$ npm install widest-line
 ```
 
 
 ## Usage
 
 ```js
-const xdgBasedir = require('xdg-basedir');
+const widestLine = require('widest-line');
 
-xdgBasedir.data;
-//=> '/home/sindresorhus/.local/share'
-
-xdgBasedir.config;
-//=> '/home/sindresorhus/.config'
-
-xdgBasedir.dataDirs
-//=> ['/home/sindresorhus/.local/share', '/usr/local/share/', '/usr/share/']
+widestLine('古\n\u001B[1m@\u001B[22m');
+//=> 2
 ```
 
 
-## API
+## Related
 
-The properties `.data`, `.config`, `.cache`, `.runtime` will return `null` in the uncommon case that both the XDG environment variable is not set and the users home directory can't be found. You need to handle this case. A common solution is to [fall back to a temp directory](https://github.com/yeoman/configstore/blob/b82690fc401318ad18dcd7d151a0003a4898a314/index.js#L15).
-
-### .data
-
-Directory for user specific data files.
-
-### .config
-
-Directory for user specific configuration files.
-
-### .cache
-
-Directory for user specific non-essential data files.
-
-### .runtime
-
-Directory for user-specific non-essential runtime files and other file objects (such as sockets, named pipes, etc).
-
-### .dataDirs
-
-Preference-ordered array of base directories to search for data files in addition to `.data`.
-
-### .configDirs
-
-Preference-ordered array of base directories to search for configuration files in addition to `.config`.
+- [string-width](https://github.com/sindresorhus/string-width) - Get the visual width of a string
 
 
 ## License

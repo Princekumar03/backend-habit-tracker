@@ -1,33 +1,54 @@
 {
-  "name": "wide-align",
-  "version": "1.1.5",
-  "description": "A wide-character aware text alignment function for use on the console or with fixed width fonts.",
-  "main": "align.js",
+  "name": "widest-line",
+  "version": "2.0.1",
+  "description": "Get the visual width of the widest line in a string - the number of columns required to display it",
+  "license": "MIT",
+  "repository": "sindresorhus/widest-line",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
-    "test": "tap --coverage test/*.js"
-  },
-  "keywords": [
-    "wide",
-    "double",
-    "unicode",
-    "cjkv",
-    "pad",
-    "align"
-  ],
-  "author": "Rebecca Turner <me@re-becca.org> (http://re-becca.org/)",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iarna/wide-align"
-  },
-  "//": "But not version 5 of string-width, as that's ESM only",
-  "dependencies": {
-    "string-width": "^1.0.2 || 2 || 3 || 4"
-  },
-  "devDependencies": {
-    "tap": "*"
+    "test": "xo && ava"
   },
   "files": [
-    "align.js"
-  ]
+    "index.js"
+  ],
+  "keywords": [
+    "string",
+    "str",
+    "character",
+    "char",
+    "unicode",
+    "width",
+    "visual",
+    "column",
+    "columns",
+    "fullwidth",
+    "full-width",
+    "full",
+    "ansi",
+    "escape",
+    "codes",
+    "cli",
+    "command-line",
+    "terminal",
+    "console",
+    "cjk",
+    "chinese",
+    "japanese",
+    "korean",
+    "fixed-width"
+  ],
+  "dependencies": {
+    "string-width": "^2.1.1"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*"
+  }
 }
