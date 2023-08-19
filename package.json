@@ -1,66 +1,27 @@
 {
-  "name": "use",
-  "description": "Easily add plugin support to your node.js application.",
-  "version": "3.1.1",
-  "homepage": "https://github.com/jonschlinkert/use",
-  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
-  "contributors": [
-    "Brian Woodward (https://twitter.com/doowb)",
-    "Jon Schlinkert (http://twitter.com/jonschlinkert)",
-    "Olsten Larck (https://i.am.charlike.online)",
-    "(https://github.com/wtgtybhertgeghgtwtg)"
-  ],
-  "repository": "jonschlinkert/use",
-  "bugs": {
-    "url": "https://github.com/jonschlinkert/use/issues"
-  },
-  "license": "MIT",
-  "files": [
-    "index.js"
-  ],
-  "main": "index.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
+  "name": "util-deprecate",
+  "version": "1.0.2",
+  "description": "The Node.js `util.deprecate()` function with browser support",
+  "main": "node.js",
+  "browser": "browser.js",
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "base-plugins": "^1.0.0",
-    "define-property": "^2.0.0",
-    "extend-shallow": "^3.0.1",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^4.0.0",
-    "gulp-format-md": "^1.0.0",
-    "gulp-istanbul": "^1.1.2",
-    "gulp-mocha": "^3.0.1",
-    "mocha": "^4.0.1"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TooTallNate/util-deprecate.git"
   },
   "keywords": [
-    "use"
+    "util",
+    "deprecate",
+    "browserify",
+    "browser",
+    "node"
   ],
-  "verb": {
-    "toc": false,
-    "layout": "default",
-    "tasks": [
-      "readme"
-    ],
-    "plugins": [
-      "gulp-format-md"
-    ],
-    "related": {
-      "list": [
-        "base",
-        "base-plugins",
-        "ware"
-      ]
-    },
-    "reflinks": [
-      "verb",
-      "ware"
-    ],
-    "lint": {
-      "reflinks": true
-    }
-  }
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TooTallNate/util-deprecate/issues"
+  },
+  "homepage": "https://github.com/TooTallNate/util-deprecate"
 }
