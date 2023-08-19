@@ -1,34 +1,100 @@
-# widest-line [![Build Status](https://travis-ci.org/sindresorhus/widest-line.svg?branch=master)](https://travis-ci.org/sindresorhus/widest-line)
+# url-parse-lax [![Build Status](https://travis-ci.org/sindresorhus/url-parse-lax.svg?branch=master)](https://travis-ci.org/sindresorhus/url-parse-lax)
 
-> Get the visual width of the widest line in a string - the number of columns required to display it
-
-Some Unicode characters are [fullwidth](https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms) and use double the normal width. [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code) are stripped and doesn't affect the width.
-
-Useful to be able to know the maximum width a string will take up in the terminal.
+> [`url.parse()`](https://nodejs.org/docs/latest/api/url.html#url_url_parse_urlstr_parsequerystring_slashesdenotehost) with support for protocol-less URLs & IPs
 
 
 ## Install
 
 ```
-$ npm install widest-line
+$ npm install --save url-parse-lax
 ```
 
 
 ## Usage
 
 ```js
-const widestLine = require('widest-line');
+var urlParseLax = require('url-parse-lax');
 
-widestLine('古\n\u001B[1m@\u001B[22m');
-//=> 2
+urlParseLax('sindresorhus.com');
+/*
+{
+	protocol: null,
+	slashes: true,
+	auth: null,
+	host: 'sindresorhus.com',
+	port: null,
+	hostname: 'sindresorhus.com',
+	hash: null,
+	search: null,
+	query: null,
+	pathname: '/',
+	path: '/',
+	href: 'http://sindresorhus.com/'
+}
+*/
+
+urlParseLax('[2001:db8::]:8000');
+/*
+{
+	protocol: null,
+	slashes: true,
+	auth: null,
+	host: '[2001:db8::]:8000',
+	port: '8000',
+	hostname: '2001:db8::',
+	hash: null,
+	search: null,
+	query: null,
+	pathname: '/',
+	path: '/',
+	href: 'http://[2001:db8::]:8000/'
+}
+*/
 ```
 
+And with the built-in `url.parse()`:
 
-## Related
+```js
+var url = require('url');
 
-- [string-width](https://github.com/sindresorhus/string-width) - Get the visual width of a string
+url.parse('sindresorhus.com');
+/*
+{
+	protocol: null,
+	slashes: null,
+	auth: null,
+	host: null,
+	port: null,
+	hostname: null,
+	hash: null,
+	search: null,
+	query: null,
+	pathname: 'sindresorhus',
+	path: 'sindresorhus',
+	href: 'sindresorhus'
+}
+*/
+
+url.parse('[2001:db8::]:8000');
+/*
+{
+	protocol: null,
+	slashes: null,
+	auth: null,
+	host: null,
+	port: null,
+	hostname: null,
+	hash: null,
+	search: null,
+	query: null,
+	pathname: '[2001:db8::]:8000',
+	path: '[2001:db8::]:8000',
+	href: '[2001:db8::]:8000'
+}
+*/
+```
 
 
 ## License
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
