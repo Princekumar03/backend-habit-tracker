@@ -1,47 +1,36 @@
-wide-align
-----------
+# wrappy
 
-A wide-character aware text alignment function for use in terminals / on the
-console.
+Callback wrapping utility
 
-### Usage
+## USAGE
 
+```javascript
+var wrappy = require("wrappy")
+
+// var wrapper = wrappy(wrapperFunction)
+
+// make sure a cb is called only once
+// See also: http://npm.im/once for this specific use case
+var once = wrappy(function (cb) {
+  var called = false
+  return function () {
+    if (called) return
+    called = true
+    return cb.apply(this, arguments)
+  }
+})
+
+function printBoo () {
+  console.log('boo')
+}
+// has some rando property
+printBoo.iAmBooPrinter = true
+
+var onlyPrintOnce = once(printBoo)
+
+onlyPrintOnce() // prints 'boo'
+onlyPrintOnce() // does nothing
+
+// random property is retained!
+assert.equal(onlyPrintOnce.iAmBooPrinter, true)
 ```
-var align = require('wide-align')
-
-// Note that if you view this on a unicode console, all of the slashes are
-// aligned. This is because on a console, all narrow characters are
-// an en wide and all wide characters are an em. In browsers, this isn't
-// held to and wide characters like "古" can be less than two narrow
-// characters even with a fixed width font.
-
-console.log(align.center('abc', 10))     // '   abc    '
-console.log(align.center('古古古', 10))  // '  古古古  '
-console.log(align.left('abc', 10))       // 'abc       '
-console.log(align.left('古古古', 10))    // '古古古    '
-console.log(align.right('abc', 10))      // '       abc'
-console.log(align.right('古古古', 10))   // '    古古古'
-```
-
-### Functions
-
-#### `align.center(str, length)` → `str`
-
-Returns *str* with spaces added to both sides such that that it is *length*
-chars long and centered in the spaces.
-
-#### `align.left(str, length)` → `str`
-
-Returns *str* with spaces to the right such that it is *length* chars long.
-
-### `align.right(str, length)` → `str`
-
-Returns *str* with spaces to the left such that it is *length* chars long.
-
-### Origins
-
-These functions were originally taken from 
-[cliui](https://npmjs.com/package/cliui). Changes include switching to the
-MUCH faster pad generation function from
-[lodash](https://npmjs.com/package/lodash), making center alignment pad
-both sides and adding left alignment.
