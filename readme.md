@@ -1,100 +1,29 @@
-# url-parse-lax [![Build Status](https://travis-ci.org/sindresorhus/url-parse-lax.svg?branch=master)](https://travis-ci.org/sindresorhus/url-parse-lax)
+# unzip-response [![Build Status](https://travis-ci.org/sindresorhus/unzip-response.svg?branch=master)](https://travis-ci.org/sindresorhus/unzip-response)
 
-> [`url.parse()`](https://nodejs.org/docs/latest/api/url.html#url_url_parse_urlstr_parsequerystring_slashesdenotehost) with support for protocol-less URLs & IPs
+> Unzip a HTTP response if needed
+
+Unzips the response from [`http.request`](https://nodejs.org/api/http.html#http_http_request_options_callback) if it's gzipped/deflated, otherwise just passes it through.
 
 
 ## Install
 
 ```
-$ npm install --save url-parse-lax
+$ npm install --save unzip-response
 ```
 
 
 ## Usage
 
 ```js
-var urlParseLax = require('url-parse-lax');
+const http = require('http');
+const unzipResponse = require('unzip-response');
 
-urlParseLax('sindresorhus.com');
-/*
-{
-	protocol: null,
-	slashes: true,
-	auth: null,
-	host: 'sindresorhus.com',
-	port: null,
-	hostname: 'sindresorhus.com',
-	hash: null,
-	search: null,
-	query: null,
-	pathname: '/',
-	path: '/',
-	href: 'http://sindresorhus.com/'
-}
-*/
-
-urlParseLax('[2001:db8::]:8000');
-/*
-{
-	protocol: null,
-	slashes: true,
-	auth: null,
-	host: '[2001:db8::]:8000',
-	port: '8000',
-	hostname: '2001:db8::',
-	hash: null,
-	search: null,
-	query: null,
-	pathname: '/',
-	path: '/',
-	href: 'http://[2001:db8::]:8000/'
-}
-*/
-```
-
-And with the built-in `url.parse()`:
-
-```js
-var url = require('url');
-
-url.parse('sindresorhus.com');
-/*
-{
-	protocol: null,
-	slashes: null,
-	auth: null,
-	host: null,
-	port: null,
-	hostname: null,
-	hash: null,
-	search: null,
-	query: null,
-	pathname: 'sindresorhus',
-	path: 'sindresorhus',
-	href: 'sindresorhus'
-}
-*/
-
-url.parse('[2001:db8::]:8000');
-/*
-{
-	protocol: null,
-	slashes: null,
-	auth: null,
-	host: null,
-	port: null,
-	hostname: null,
-	hash: null,
-	search: null,
-	query: null,
-	pathname: '[2001:db8::]:8000',
-	path: '[2001:db8::]:8000',
-	href: '[2001:db8::]:8000'
-}
-*/
+http.get('http://sindresorhus.com', res => {
+	res = unzipResponse(res);
+});
 ```
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
