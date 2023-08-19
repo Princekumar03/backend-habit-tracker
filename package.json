@@ -1,55 +1,29 @@
 {
-  "name": "xtend",
-  "version": "4.0.2",
-  "description": "extend like a boss",
-  "keywords": [
-    "extend",
-    "merge",
-    "options",
-    "opts",
-    "object",
-    "array"
-  ],
-  "author": "Raynos <raynos2@gmail.com>",
-  "repository": "git://github.com/Raynos/xtend.git",
-  "main": "immutable",
-  "scripts": {
-    "test": "node test"
+  "name": "yallist",
+  "version": "4.0.0",
+  "description": "Yet Another Linked List",
+  "main": "yallist.js",
+  "directories": {
+    "test": "test"
   },
+  "files": [
+    "yallist.js",
+    "iterator.js"
+  ],
   "dependencies": {},
   "devDependencies": {
-    "tape": "~1.1.0"
+    "tap": "^12.1.0"
   },
-  "homepage": "https://github.com/Raynos/xtend",
-  "contributors": [
-    {
-      "name": "Jake Verbaten"
-    },
-    {
-      "name": "Matt Esch"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/Raynos/xtend/issues",
-    "email": "raynos2@gmail.com"
+  "scripts": {
+    "test": "tap test/*.js --100",
+    "preversion": "npm test",
+    "postversion": "npm publish",
+    "postpublish": "git push origin --all; git push origin --tags"
   },
-  "license": "MIT",
-  "testling": {
-    "files": "test.js",
-    "browsers": [
-      "ie/7..latest",
-      "firefox/16..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacs/yallist.git"
   },
-  "engines": {
-    "node": ">=0.4"
-  }
+  "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
+  "license": "ISC"
 }
